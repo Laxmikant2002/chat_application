@@ -1,0 +1,26 @@
+{% extends 'layouts/box.html' %}
+
+{% block content %}
+
+<h1 class="mb-8">Account Settings</h1>
+
+<table class="w-full text-sm text-left text-gray-500">
+    <tbody>
+        <tr>
+            <th scope="row" class="pt-4 pb-1 text-base font-bold text-gray-900">
+                Email address
+            </th>
+            <td id="email-address" class="pt-4 pb-1 pl-4">
+                {% if user.email %}{{ user.email }}{% else %}No Email{% endif %}
+            </td>
+            <td class="pt-4 pb-1 pl-4">
+                <a id="email-edit" class="cursor-pointer font-medium text-blue-600 hover:underline"
+                    hx-get="{% url 'profile-emailchange' %}" hx-target="#email-address" hx-swap="outerHTML">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}
